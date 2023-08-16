@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calling_Cat_Apis
 {
-    public  interface ICatService
-    {
-        Task<Cats> GetCatServiceAsync();
-    }
+    //public interface IGetRequiredService
+    //{
+    //    IServiceProvider getRequiredService(IServiceProvider service);
+    //}
 }

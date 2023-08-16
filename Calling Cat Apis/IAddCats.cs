@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calling_Cat_Apis
 {
-    public  interface ICatService
+    public interface IAddCats
     {
-        Task<Cats> GetCatServiceAsync();
+        Task<Cats> AddingCats(Cats catsResults);
     }
 }

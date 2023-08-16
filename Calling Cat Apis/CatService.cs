@@ -10,18 +10,25 @@ namespace Calling_Cat_Apis
 {
     public class CatService:ICatService
     {
-       
-        public async Task<string> GetCatServiceAsync()
+        public async Task<Cats> GetCatServiceAsync()
         {
-            var _httpClient = new HttpClient();
-            var requestMessage = new HttpRequestMessage();
-            requestMessage.RequestUri = new Uri("https://catfact.ninja/facts?max_length=50&limit=7");
-            var json = await _httpClient.SendAsync(requestMessage);
-            var result = await json.Content.ReadAsStringAsync();
-            var catobject = JsonConvert.DeserializeObject<Cats>(result);
-            Console.WriteLine(result);
-            return result;
+            try
+            {
+                var _httpClient = new HttpClient();
+                var requestMessage = new HttpRequestMessage();
+                requestMessage.RequestUri = new Uri("https://catfact.ninja/facts?max_length=50&limit=7");
+                var json = await _httpClient.SendAsync(requestMessage);
+                var response = await json.Content.ReadAsStringAsync();
+                var catobject = JsonConvert.DeserializeObject<Cats>(response);
+                Console.WriteLine(response);
+                return catobject;
+            }
+
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.Message);
+            }
+            return null;
         }
-       
     }    
 }
